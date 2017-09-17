@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  {% for product in products %}
+    <div class="container col-sm-12">
+        <form action="/orders/{{product.id}}/lineItems" method="POST">
+          <p>{{ product.name }} {{product.id}}</p>
+          <button class="btn btn-primary pull-right">Add To Cart
+          </button>
+        </form>
+    </div>
+  <div class="clearfix"></div>
+  {% endfor %}
+{% endblock %}
+
+{% block cart %}
+  <form action="/orders/{{product.id}}" method="PUT">
+    Address:
+    <input type="text" name="Address">
+  <button type="button" class="btn btn-primary pull-left">Place Order</button>
+</form>
+{% endblock %}
+
+{% block orders %}
+{% endblock %}
